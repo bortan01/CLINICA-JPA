@@ -56,9 +56,8 @@
                         <p:column headerText="">
                             <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
                                              ajax="true" update="formModificar">
-                                <f:setPropertyActionListener 
-                                    target="#{pacienteBean.listaPaciente}" 
-                                    value="#{variable_paciente}"/>
+                                <f:setPropertyActionListener target="#{pacienteBean.pacienteSeleccionado}" value="#{variable_paciente}"/>
+                                <f:setPropertyActionListener target="#{autoCompleteBeanClinica.clinica}" value="#{variable_paciente.idClinica}" />  
                             </p:commandButton>
                         </p:column>
                         <p:column>
@@ -70,87 +69,87 @@
                         </p:column>
                     </p:panelGrid>
                 </p:column>
-                
+               
            </p:dataTable>
         </h:form>
         
-        <!-->el idAutor es de output text</!-->
-        <h:form id="formModificar"  >
-            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
-                <p:panel header="Modificar Doctor">
+        <h:form id="formModificar">
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos del paciente" >
+                <p:panel header="Modificar">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="idPaciente" value="ID DE PACIENTE"/> <!-->el idAutor es de output text</!-->
+                                <p:outputLabel for="nombre" value="NOMBRE"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="idPaciente" value="#{pacienteBean.pacienteSeleccionado.idPaciente}"/>
+                                <h:outputText id="nombre" value="#{pacienteBean.pacienteSeleccionado.nombre}"/>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="nombres" value="NOMBRE"/>
+                                <p:outputLabel for="apelldo" value="APELLIDO"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="nombres" value="#{doctorBean.doctorSeleccionado.nombre}"/>
+                                <h:outputText id="apelldo" value="#{pacienteBean.pacienteSeleccionado.apellido}"/>
                             </p:column>
                         </p:row>
-                       <p:row>
+                        <p:row>
                             <p:column>
                                 <p:outputLabel for="direccion" value="DIRECCION"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="direccion" value="#{doctorBean.doctorSeleccionado.direccion}"/>
+                                <h:outputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}"/>
                             </p:column>
-
                         </p:row>
-                         <p:row>
+                        <p:row>
                             <p:column>
                                 <p:outputLabel for="edad" value="EDAD"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="edad" value="#{doctorBean.doctorSeleccionado.edad}"/>
+                                <h:outputText id="edad" value="#{pacienteBean.pacienteSeleccionado.edad}"/>
                             </p:column>
                         </p:row>
-                        <p:row>
+                          <p:row>
                             <p:column>
                                 <p:outputLabel value="GENERO"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu  value="#{doctorBean.doctorSeleccionado.sexo}">
+                                <p:selectOneMenu  value="#{pacienteBean.pacienteSeleccionado.sexo}">
                                     <f:selectItem itemLabel="Seleccione genero"  itemValue="" />
-                                    <f:selectItems value="#{doctorBean.opcionesGenero}" />
+                                    <f:selectItems value="#{pacienteBean.opcionesGenero}" />
                                 </p:selectOneMenu>
                             </p:column>
                         </p:row>
-                        
-                        
                         <p:row>
                             <p:column>
-                                <h:commandButton value="Guardar cambios"
-                                                 actionListener="#{doctorBean.actualizarDoctor()}"/>
+                                <h:outputLabel for="clinica" value="CLINICA" />
+                            </p:column>
+                            <p:column>
+                                <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">                                                                  
+                                    <p:column>
+                                        #{m.idClinica}
+                                    </p:column>
+                                    <p:column>
+                                        #{m.nombre} 
+                                    </p:column>                                                         
+                                </p:autoComplete>  
                             </p:column>
                         </p:row>
 
+
+                        <p:row>
+                            <p:column>
+                                <h:commandButton value="Guardar cambios"
+                                                 actionListener="#{libroBean.actualizarLibro()}"/>
+                            </p:column>
+                        </p:row>
                     </p:panelGrid>
                 </p:panel>
             </p:dialog>
         </h:form>
         
-        <p:confirmDialog message="¿Realmente desea borrar el registro?" 
-                         header="Mensaje de confirmación"
-                         widgetVar="confirmacion" >
-            <h:form>
-                <p:commandButton id="confirm"
-                                 value="Si" 
-                                 oncomplete="PF('confirmacion').hide()" 
-                                 actionListener="#{doctorBean.eliminarDoctor()}"/>
-
-                <p:commandButton id="decline" value="No" 
-                                 onclick="PF('confirmacion').hide()" 
-                                 type="button"/>
-            </h:form>
-        </p:confirmDialog>
+        
+        
     </ui:define>
 
     <ui:define name="bottom">

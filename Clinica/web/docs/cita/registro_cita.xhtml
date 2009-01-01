@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../plantillas/MenuDeNavegacion.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="top">
+        top
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <p:panel  header="Nueva Cita">
+                <p:panelGrid  columns="2" style="width:100%">
+                    
+                    <h:outputLabel for="doctor" value="DOCTOR" />
+                    <p:autoComplete id="doctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
+                        <p:column>
+                            #{m.id_doctor}
+                        </p:column>
+                        <p:column>
+                            #{m.nombre} 
+                        </p:column>                                                         
+                    </p:autoComplete> 
+                    
+
+                </p:panelGrid>
+
+                <f:facet name="footer">     
+                    <p:commandButton  id="guardar" value="Guardar" icon="ui-icon-check" 
+                                      style="margin:0" action="#{clinicaBean.insertarClinica()}"/>
+                    <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" 
+                                     style="margin:0" action="listar_clinica" process="@this"/>   
+                </f:facet>
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="bottom">
+        bottom
+    </ui:define>
+
+</ui:composition>
