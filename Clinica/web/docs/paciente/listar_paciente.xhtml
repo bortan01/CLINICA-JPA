@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../plantillas/MenuDeNavegacion.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="top">
+        top
+    </ui:define>
+
+    <ui:define name="content">
+            <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
+            <p:growl autoUpdate="true" showDetail="true"/>
+            <p:messages autoUpdate="true" closable="true" showDetail="true"/>
+            <p:dataTable id="tabla_paciente"  value="#{pacienteBean.listaPaciente}"  var="variable_paciente"         
+
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         filteredValue="#{pacienteBean.listaPaciente}"
+                         widgetVar="wTablaPaciente">
+                <f:facet name="header">
+
+                    <p:outputPanel>
+                        <p:outputLabel value="Busqueda" for="globalFilter"/>
+                        <p:inputText id="globalFilter" style="width: 500px" 
+                                     onkeyup="PF('wTablaPaciente').filter()"/>
+                        <p:commandButton action="registro_paciente.xhtml?faces-redirect=true"
+                                         icon="ui-icon-circle-plus"/>
+                    </p:outputPanel>                    
+                </f:facet>
+
+                <p:column headerText="NOMBRE" filterBy="#{variable_paciente.nombre}">
+                    <h:outputLabel value="#{variable_paciente.nombre}"/>
+                </p:column>
+                <p:column headerText="CLINICA" filterBy="#{variable_paciente.idClinica.nombre}">
+                    <h:outputLabel value="#{variable_paciente.idClinica.nombre}"/>
+                </p:column>
+                <p:column headerText="DIRECCION" filterBy="#{variable_paciente.direccion}">
+                    <h:outputLabel value="#{variable_paciente.direccion}"/>
+                </p:column>
+                <p:column headerText="EDAD" filterBy="#{variable_paciente.edad}">
+                    <h:outputLabel value="#{variable_paciente.edad}"/>
+                </p:column>
+                <p:column headerText="SEXO" filterBy="#{variable_paciente.sexo}">
+                    <h:outputLabel value="#{variable_paciente.sexo}"/>
+                </p:column>
+                <p:column headerText="CORREO" filterBy="#{variable_paciente.correo}">
+                    <h:outputLabel value="#{variable_paciente.correo}"/>
+                </p:column>
+                
+                <p:column headerText="Acciones" style="width: 12%">
+                    <p:panelGrid>
+                        <p:column headerText="">
+                            <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
+                                             ajax="true" update="formModificar">
+                                <f:setPropertyActionListener 
+                                    target="#{pacienteBean.listaPaciente}" 
+                                    value="#{variable_paciente}"/>
+                            </p:commandButton>
+                        </p:column>
+                        <p:column>
+                            <p:commandButton icon="ui-icon-trash" oncomplete="PF('confirmacion').show()" >
+                                <f:setPropertyActionListener 
+                                    target="#{pacienteBean.pacienteSeleccionado}" 
+                                    value="#{variable_paciente}"/>
+                            </p:commandButton>
+                        </p:column>
+                    </p:panelGrid>
+                </p:column>
+                
+           </p:dataTable>
+        </h:form>
+        
+        <!-->el idAutor es de output text</!-->
+        <h:form id="formModificar"  >
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
+                <p:panel header="Modificar Doctor">
+                    <p:panelGrid styleClass="sinBorde">
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="idPaciente" value="ID DE PACIENTE"/> <!-->el idAutor es de output text</!-->
+                            </p:column>
+                            <p:column>
+                                <h:outputText id="idPaciente" value="#{pacienteBean.pacienteSeleccionado.idPaciente}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel for="nombres" value="NOMBRE"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="nombres" value="#{doctorBean.doctorSeleccionado.nombre}"/>
+                            </p:column>
+                        </p:row>
+                       <p:row>
+                            <p:column>
+                                <p:outputLabel for="direccion" value="DIRECCION"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="direccion" value="#{doctorBean.doctorSeleccionado.direccion}"/>
+                            </p:column>
+
+                        </p:row>
+                         <p:row>
+                            <p:column>
+                                <p:outputLabel for="edad" value="EDAD"/>
+                            </p:column>
+                            <p:column>
+                                <p:inputText id="edad" value="#{doctorBean.doctorSeleccionado.edad}"/>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="GENERO"/>
+                            </p:column>
+                            <p:column>
+                                <p:selectOneMenu  value="#{doctorBean.doctorSeleccionado.sexo}">
+                                    <f:selectItem itemLabel="Seleccione genero"  itemValue="" />
+                                    <f:selectItems value="#{doctorBean.opcionesGenero}" />
+                                </p:selectOneMenu>
+                            </p:column>
+                        </p:row>
+                        
+                        
+                        <p:row>
+                            <p:column>
+                                <h:commandButton value="Guardar cambios"
+                                                 actionListener="#{doctorBean.actualizarDoctor()}"/>
+                            </p:column>
+                        </p:row>
+
+                    </p:panelGrid>
+                </p:panel>
+            </p:dialog>
+        </h:form>
+        
+        <p:confirmDialog message="¿Realmente desea borrar el registro?" 
+                         header="Mensaje de confirmación"
+                         widgetVar="confirmacion" >
+            <h:form>
+                <p:commandButton id="confirm"
+                                 value="Si" 
+                                 oncomplete="PF('confirmacion').hide()" 
+                                 actionListener="#{doctorBean.eliminarDoctor()}"/>
+
+                <p:commandButton id="decline" value="No" 
+                                 onclick="PF('confirmacion').hide()" 
+                                 type="button"/>
+            </h:form>
+        </p:confirmDialog>
+    </ui:define>
+
+    <ui:define name="bottom">
+        bottom
+    </ui:define>
+
+</ui:composition>
