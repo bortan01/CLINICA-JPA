@@ -17,7 +17,7 @@ public class AutoCompleteBeanClinica implements Serializable {
     ListaClinica clinicaData;
     Clinica clinica;
 
-    public List<Clinica> completeDoctorDespacho(String query) {
+    public List<Clinica> completeClinicaDespacho(String query) {
         List<Clinica> allClinica = getClinicaData().getListaClinica();
         List<Clinica> filterClinica = new ArrayList<Clinica>();
         for (Clinica clinicaSelected : allClinica) {

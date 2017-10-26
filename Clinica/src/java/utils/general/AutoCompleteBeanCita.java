@@ -9,15 +9,15 @@ import javax.faces.bean.SessionScoped;
 import modelo.entidades.Cita;
 import utils.lista.ListaCita;
 
-@ManagedBean(name = "autoCompleteBeanAlumno")
+@ManagedBean(name = "autoCompleteBeanCita")
 @SessionScoped
 public class AutoCompleteBeanCita implements Serializable {
 
-    @ManagedProperty("#{listasAlumnos}")
+    @ManagedProperty("#{listaCita}")
     ListaCita CitaData;
     Cita cita;
 
-    public List<Cita> completeAlumnoDespacho(String query) {
+    public List<Cita> completeCitaDespacho(String query) {
         List<Cita> allCita = getCitaData().getListaCita();
         List<Cita> filterCita = new ArrayList<Cita>();
         for (Cita CitaSelected : allCita) {

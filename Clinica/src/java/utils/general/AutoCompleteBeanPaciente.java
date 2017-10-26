@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
 import modelo.entidades.Paciente;
 import utils.lista.ListaPaciente;
 
-@ManagedBean(name = "autoCompleteBeanAlumno")
+@ManagedBean(name = "autoCompleteBeanPaciente")
 @SessionScoped
 public class AutoCompleteBeanPaciente implements Serializable {
 
