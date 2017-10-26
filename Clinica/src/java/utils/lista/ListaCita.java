@@ -15,11 +15,11 @@ public class ListaCita implements Serializable{
 
     @Inject
     CitaFacade CitaFacade;
-    public List<Cita> CitaDoctor;
+    public List<Cita> ListaCita;
 
     @PostConstruct
     public void init() {
-        CitaDoctor = llenarLista();
+        ListaCita = llenarLista();
     }
 
     public List<Cita> llenarLista() {
@@ -36,13 +36,14 @@ public class ListaCita implements Serializable{
         this.CitaFacade = CitaFacade;
     }
 
-    public List<Cita> getCitaDoctor() {
-        return CitaDoctor;
+    public List<Cita> getListaCita() {
+        return ListaCita;
     }
 
-    public void setCitaDoctor(List<Cita> CitaDoctor) {
-        this.CitaDoctor = CitaDoctor;
+    public void setListaCita(List<Cita> ListaCita) {
+        this.ListaCita = ListaCita;
     }
 
+    
     
 }
