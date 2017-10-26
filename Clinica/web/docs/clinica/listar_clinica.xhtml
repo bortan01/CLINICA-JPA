@@ -47,7 +47,7 @@
                     <p:panelGrid>
                         <p:column headerText="">
                             <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
-                                             ajax="true">
+                                             ajax="true" update="formModificar">
                                 <f:setPropertyActionListener 
                                     target="#{clinicaBean.clinicaSeleccionada}" 
                                     value="#{variable_clinica}"/>
@@ -68,10 +68,10 @@
             </p:dataTable>
         </h:form>
 
-
+        <!-->el idAutor es de output text</!-->
         <h:form id="formModificar"  >
             <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Clinica" >
-                <p:panel header="Modificar">
+                <p:panel header="Modificar Clinica">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
@@ -88,18 +88,21 @@
                             <p:column>
                                 <p:inputText id="nombres" value="#{clinicaBean.clinicaSeleccionada.nombre}"/>
                             </p:column>
+                        </p:row>
+                        <p:row>
+
                             <p:column>
                                 <p:outputLabel for="localizacion" value="LOCALIZACION DE CLINICA"/>
                             </p:column>
                             <p:column>
                                 <p:inputText id="localizacion" value="#{clinicaBean.clinicaSeleccionada.localizacion}"/>
                             </p:column>
-                            
+
                         </p:row>
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
-                                                 actionListener="#{clinicaBean.clinicaSeleccionada.idClinica}"/>
+                                                 actionListener="#{clinicaBean.actualizarClinica()}"/>
                             </p:column>
                         </p:row>
 
@@ -107,6 +110,24 @@
                 </p:panel>
             </p:dialog>
         </h:form>
+
+        <!-->el idAutor es de output text</!-->
+        <p:confirmDialog message="¿Realmente desea borrar el registro?" 
+                         header="Mensaje de confirmación"
+                         widgetVar="confirmacion" >
+            <h:form>
+                <p:commandButton id="confirm"
+                                 value="Si" 
+                                 oncomplete="PF('confirmacion').hide()" 
+                                 actionListener="#{clinicaBean.eliminarClinica()}"/>
+
+                <p:commandButton id="decline" value="No" 
+                                 onclick="PF('confirmacion').hide()" 
+                                 type="button"/>
+            </h:form>
+        </p:confirmDialog>
+
+
 
     </ui:define>
 
