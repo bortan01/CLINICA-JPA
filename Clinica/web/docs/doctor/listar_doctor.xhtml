@@ -27,7 +27,7 @@
                         <p:outputLabel value="Busqueda" for="globalFilter"/>
                         <p:inputText id="globalFilter" style="width: 500px" 
                                      onkeyup="PF('wTablaDoctor').filter()"/>
-                        <p:commandButton action="registro_doctor.xhtml?faces-redirect=true"
+                        <p:commandButton action="registrar_doctor.xhtml?faces-redirect=true"
                                          icon="ui-icon-circle-plus"/>
                     </p:outputPanel>                    
                 </f:facet>
@@ -74,7 +74,7 @@
         <!-->el idAutor es de output text</!-->
         <h:form id="formModificar"  >
             <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
-                <p:panel header="Modificar Clinica">
+                <p:panel header="Modificar Doctor">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
@@ -135,7 +135,7 @@
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
-                                                 actionListener="#{clinicaBean.actualizarClinica()}"/>
+                                                 actionListener="#{doctorBean.actualizarDoctor()}"/>
                             </p:column>
                         </p:row>
 
@@ -143,6 +143,22 @@
                 </p:panel>
             </p:dialog>
         </h:form>
+        
+        <p:confirmDialog message="¿Realmente desea borrar el registro?" 
+                         header="Mensaje de confirmación"
+                         widgetVar="confirmacion" >
+            <h:form>
+                <p:commandButton id="confirm"
+                                 value="Si" 
+                                 oncomplete="PF('confirmacion').hide()" 
+                                 actionListener="#{doctorBean.eliminarDoctor()}"/>
+
+                <p:commandButton id="decline" value="No" 
+                                 onclick="PF('confirmacion').hide()" 
+                                 type="button"/>
+            </h:form>
+        </p:confirmDialog>
+        
     </ui:define>
 
     <ui:define name="bottom">

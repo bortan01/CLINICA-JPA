@@ -39,18 +39,18 @@ private SelectItem[] opcionesGenero = new SelectItem[]{new SelectItem("MASCULINO
     return listaDoctor;
     }
     
-public String eliminarClinica() {
+public String eliminarDoctor() {
         doctorFac.remove(doctorSeleccionado);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "informacion", "Datos Eliminados"));
         return "listar_doctor.xhtml?faces-redirect=true";
     }
     
-    public String actualizarClinica() {
+    public String actualizarDoctor() {
         doctorFac.edit(doctorSeleccionado);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "informacion", "Datos Modificados"));
         return "listar_doctor.xhtml?faces-redirect=true";
     }
-  public String insertarClinica() {
+  public String insertarDoctor() {
         doctorFac.create(doctorSeleccionado);
             return "listar_doctor.xhtml?faces-redirect=true";
     }

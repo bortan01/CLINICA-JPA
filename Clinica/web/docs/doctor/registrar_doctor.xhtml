@@ -1,14 +1,61 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../plantillas/MenuDeNavegacion.xhtml">
+                template="./../plantillas/MenuDeNavegacion.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="top">
         top
     </ui:define>
 
     <ui:define name="content">
-        content
+        <h:form>
+            <p:panel  header="Nuevo Doctor">
+                <p:panelGrid  columns="2" style="width:100%">
+                    
+                    <p:outputLabel style="width: 40px;" value="Nombre"/>
+                    <p:inputText value="#{doctorBean.doctorSeleccionado.nombre}"/>
+
+
+                    <p:outputLabel value="Apellido"/>
+                    <p:inputText value="#{doctorBean.doctorSeleccionado.apellido}"
+                                 size="30" required="true" 
+                                 style="width:1080px;margin-left:-4px;" id="nombre">                         
+                        <f:validateLength maximum="25"/>
+                    </p:inputText>
+                    
+                    <p:outputLabel value="direccion"/>
+                    <p:inputText value="#{doctorBean.doctorSeleccionado.direccion}"
+                                 size="30" required="true" 
+                                 style="width:1080px;margin-left:-4px;" id="direccion">                         
+                        <f:validateLength maximum="25"/>
+                    </p:inputText>
+                    
+                    <p:outputLabel value="edad"/>
+                    <p:inputText value="#{doctorBean.doctorSeleccionado.edad}"
+                                 size="30" required="true" 
+                                 style="width:1080px;margin-left:-4px;" id="edad">                         
+                        <f:validateLength maximum="25"/>
+                    </p:inputText>
+                    <p:outputLabel value="sexo"/>
+                    <p:selectOneMenu  value="#{doctorBean.doctorSeleccionado.sexo}">
+                        <f:selectItem itemLabel="Seleccione tipo de genero"  itemValue="" />
+                        <f:selectItems value="#{doctorBean.opcionesGenero}" />
+                    </p:selectOneMenu>
+
+
+                </p:panelGrid>
+
+                <f:facet name="footer">     
+                    <p:commandButton  id="guardar" value="Guardar" icon="ui-icon-check" 
+                                      style="margin:0" action="#{doctorBean.insertarDoctor()}"/>
+                    <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" 
+                                     style="margin:0" action="listar_doctor" process="@this"/>   
+                </f:facet>
+            </p:panel>
+        </h:form>
     </ui:define>
 
     <ui:define name="bottom">
