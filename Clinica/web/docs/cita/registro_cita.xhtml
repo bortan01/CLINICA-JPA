@@ -13,11 +13,11 @@
         <h:form>
             <p:panel  header="Nueva Cita">
                 <p:panelGrid  columns="2" style="width:100%">
-                    
+                    l
                     <h:outputLabel for="doctor" value="DOCTOR" />
                     <p:autoComplete id="doctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
                         <p:column>
-                            #{m.id_doctor}
+                            #{m.idDoctor}
                         </p:column>
                         <p:column>
                             #{m.nombre} 
