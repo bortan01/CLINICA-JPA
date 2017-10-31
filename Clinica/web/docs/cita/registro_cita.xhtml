@@ -28,12 +28,21 @@
                     <h:outputLabel for="paciente" value="PACIENTE" />
                     <p:autoComplete id="paciente" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
                         <p:column>
-                       2
+                       #{w.idPaciente}
                         </p:column>
                         <p:column>
-                            Boris Ricardo
+                            #{w.nombre}
                         </p:column>                                                         
-                    </p:autoComplete>              
+                    </p:autoComplete>
+                    
+                    <p:outputLabel value="Fecha de Cita"/>
+                    <p:calendar value="#{citaBean.citaSeleccionada.fecha}" locale="de" 
+                                navigator="true" pattern="dd-MM-yyyy" />
+                    
+                  <p:outputLabel value="ESTADO"/>
+                    <p:column headerText="ESTADO">
+                    <h:outputLabel value="PENDIENTE"/>
+                </p:column>
                   
                     
                 </p:panelGrid>
