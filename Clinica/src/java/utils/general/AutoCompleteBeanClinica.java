@@ -6,46 +6,45 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import modelo.entidades.Clinica;
-import utils.lista.ListaClinica;
+import modelo.entidades.Doctor;
+import utils.lista.ListaDoctor;
 
 @ManagedBean(name = "autoCompleteBeanClinica")
 @SessionScoped
+
 public class AutoCompleteBeanClinica implements Serializable {
 
-    @ManagedProperty("#{listaClinica}")
-    ListaClinica clinicaData;
-    Clinica clinica;
+    @ManagedProperty("#{listaDoctor}")
+    ListaDoctor doctorData;
+    Doctor doctor;
 
-    public List<Clinica> completeClinicaDespacho(String query) {
-        List<Clinica> allClinica = getClinicaData().getListaClinica();
-        List<Clinica> filterClinica = new ArrayList<Clinica>();
-        for (Clinica clinicaSelected : allClinica) {
-            
-            if (clinicaSelected.getNombre().toLowerCase().startsWith(query) || clinicaSelected.getLocalizacion().toLowerCase().startsWith(query)) {
-                filterClinica.add(clinicaSelected);
+    public List<Doctor> completeDoctorDespacho(String query) {
+        List<Doctor> allDoctor = getdoctorData().getListaDoctor();
+        List<Doctor> filterDoctor = new ArrayList<Doctor>();
+        for (Doctor doctorSelected : allDoctor) {
+            if (doctorSelected.getNombre().toLowerCase().startsWith(query) || doctorSelected.getApellido().toLowerCase().startsWith(query)  || doctorSelected.getDireccion().toLowerCase().startsWith(query)) {
+                filterDoctor.add(doctorSelected);
             }
         }
-        return filterClinica;
+        return filterDoctor;
     }
 
-    public ListaClinica getClinicaData() {
-        return clinicaData;
+    public ListaDoctor getdoctorData() {
+        return doctorData;
     }
 
-    public void setClinicaData(ListaClinica clinicaData) {
-        this.clinicaData = clinicaData;
+    public void setdoctorData(ListaDoctor doctorData) {
+        this.doctorData = doctorData;
     }
 
-    public Clinica getClinica() {
-        return clinica;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setClinica(Clinica clinica) {
-        this.clinica = clinica;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
     
     
     
-
 }

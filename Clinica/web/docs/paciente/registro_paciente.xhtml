@@ -28,20 +28,23 @@
                         <f:selectItems value="#{pacienteBean.opcionesGenero}" />
                     </p:selectOneMenu>
                       
-                    <h:outputLabel for="doctor" value="DOCTOR" />
-                    <p:autoComplete id="doctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
+                    <h:outputLabel for="clinica" value="CLINICA" />
+                    <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.doctor}" completeMethod="#{autoCompleteBeanClinica.completeDoctorDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">                                              
                         <p:column>
-                            #{m.idDoctor}
+                            dfadfsadfa
                         </p:column>
                         <p:column>
-                            #{m.nombre} 
+                            ferqererqew
                         </p:column>                                                         
                     </p:autoComplete> 
 
+
                    
                     <f:facet name="footer">                        
-                        <p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{libroBean.insertarLibro()}"></p:commandButton>                                  
-                        <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" style="margin:0" action="TblLibro" process="@this"></p:commandButton>   
+                        <p:commandButton id="guardar" value="Guardar" icon="ui-icon-check" style="margin:0" action="#{pacienteBean.insertarPaciente()}"></p:commandButton>                                  
+                        
+                        
+                        <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" style="margin:0" action="listar_paciente" process="@this"></p:commandButton>   
                     </f:facet>
 
                 </p:panelGrid>
