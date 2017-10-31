@@ -6,45 +6,43 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
-import modelo.entidades.Doctor;
-import utils.lista.ListaDoctor;
+import modelo.entidades.Clinica;
+import utils.lista.ListaClinica;
 
 @ManagedBean(name = "autoCompleteBeanClinica")
 @SessionScoped
 
 public class AutoCompleteBeanClinica implements Serializable {
 
-    @ManagedProperty("#{listaDoctor}")
-    ListaDoctor doctorData;
-    Doctor doctor;
+    @ManagedProperty("#{listaClinica}")
+    ListaClinica clinica_data;
+    Clinica clinica;
 
-    public List<Doctor> completeDoctorDespacho(String query) {
-        List<Doctor> allDoctor = getdoctorData().getListaDoctor();
-        List<Doctor> filterDoctor = new ArrayList<Doctor>();
-        for (Doctor doctorSelected : allDoctor) {
-            if (doctorSelected.getNombre().toLowerCase().startsWith(query) || doctorSelected.getApellido().toLowerCase().startsWith(query)  || doctorSelected.getDireccion().toLowerCase().startsWith(query)) {
+    public List<Clinica> completeDoctorDespacho(String query) {
+        List<Clinica> allDoctor = getClinica_data().getListaClinica();
+        List<Clinica> filterDoctor = new ArrayList<Clinica>();
+        for (Clinica doctorSelected : allDoctor) {
+            if (doctorSelected.getNombre().toLowerCase().startsWith(query)) {
                 filterDoctor.add(doctorSelected);
             }
         }
         return filterDoctor;
     }
 
-    public ListaDoctor getdoctorData() {
-        return doctorData;
+    public ListaClinica getClinica_data() {
+        return clinica_data;
     }
 
-    public void setdoctorData(ListaDoctor doctorData) {
-        this.doctorData = doctorData;
+    public void setClinica_data(ListaClinica clinica_data) {
+        this.clinica_data = clinica_data;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public Clinica getClinica() {
+        return clinica;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setClinica(Clinica clinica) {
+        this.clinica = clinica;
     }
-    
-    
-    
+
 }

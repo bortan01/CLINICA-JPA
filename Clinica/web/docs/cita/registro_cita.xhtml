@@ -28,10 +28,10 @@
                     <h:outputLabel for="paciente" value="PACIENTE" />
                     <p:autoComplete id="paciente" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
                         <p:column>
-                        fgsdfgsfgsfg
+                       2
                         </p:column>
                         <p:column>
-                            gsfgdssf
+                            Boris Ricardo
                         </p:column>                                                         
                     </p:autoComplete>              
                   
@@ -40,7 +40,7 @@
 
                 <f:facet name="footer">     
                     <p:commandButton  id="guardar" value="Guardar" icon="ui-icon-check" 
-                                      style="margin:0" action="#{clinicaBean.insertarClinica()}"/>
+                                      style="margin:0" action="#{citaBean.insertarCita()}"/>
                     <p:commandButton id="cancelar" value="Cancelar" icon="ui-icon-circle-close" 
                                      style="margin:0" action="listar_clinica" process="@this"/>   
                 </f:facet>
