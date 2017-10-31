@@ -14,11 +14,11 @@ import utils.lista.ListaPaciente;
 public class AutoCompleteBeanPaciente implements Serializable {
 
     @ManagedProperty("#{listaPaciente}")
-    ListaPaciente PacienteData;
+    ListaPaciente pacienteDataxxx;
     Paciente paciente;
 
-    public List<Paciente> completeAlumnoDespacho(String query) {
-        List<Paciente> allPaciente = getPacienteData().getListaPaciente();
+    public List<Paciente> completePacienteDespacho(String query) {
+        List<Paciente> allPaciente = getpacienteDataxxx().getListaPaciente();
         List<Paciente> filterPaciente = new ArrayList<Paciente>();
         for (Paciente pacienteSelected : allPaciente) {
             if (pacienteSelected.getNombre().toLowerCase().startsWith(query) || pacienteSelected.getApellido().toLowerCase().startsWith(query)  || pacienteSelected.getDireccion().toLowerCase().startsWith(query)) {
@@ -28,12 +28,12 @@ public class AutoCompleteBeanPaciente implements Serializable {
         return filterPaciente;
     }
 
-    public ListaPaciente getPacienteData() {
-        return PacienteData;
+    public ListaPaciente getpacienteDataxxx() {
+        return pacienteDataxxx;
     }
 
-    public void setPacienteData(ListaPaciente PacienteData) {
-        this.PacienteData = PacienteData;
+    public void setpacienteDataxxx(ListaPaciente pacienteDataxxx) {
+        this.pacienteDataxxx = pacienteDataxxx;
     }
 
     public Paciente getPaciente() {

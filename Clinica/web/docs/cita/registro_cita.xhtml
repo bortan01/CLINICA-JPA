@@ -13,7 +13,8 @@
         <h:form>
             <p:panel  header="Nueva Cita">
                 <p:panelGrid  columns="2" style="width:100%">
-                    l
+                    
+                    
                     <h:outputLabel for="doctor" value="DOCTOR" />
                     <p:autoComplete id="doctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
                         <p:column>
@@ -24,7 +25,17 @@
                         </p:column>                                                         
                     </p:autoComplete> 
                     
-
+                    <h:outputLabel for="paciente" value="PACIENTE" />
+                    <p:autoComplete id="paciente" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
+                        <p:column>
+                        fgsdfgsfgsfg
+                        </p:column>
+                        <p:column>
+                            gsfgdssf
+                        </p:column>                                                         
+                    </p:autoComplete>              
+                  
+                    
                 </p:panelGrid>
 
                 <f:facet name="footer">     

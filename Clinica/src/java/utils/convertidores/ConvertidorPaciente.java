@@ -8,7 +8,7 @@ import modelo.entidades.Paciente;
 import utils.lista.ListaPaciente;
 
 
-@FacesConverter ("convertidorLibro")
+@FacesConverter ("convertidorPaciente")
 public class ConvertidorPaciente implements Converter {
 
     @Override

@@ -27,10 +27,11 @@
                         <f:selectItem itemLabel="Seleccione tipo de genero"  itemValue="" />
                         <f:selectItems value="#{pacienteBean.opcionesGenero}" />
                     </p:selectOneMenu>
-                     <h:outputLabel for="clinica" value="CLINICA" />
-                     <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="m" itemLabel="#{m.idClinica}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">                                                                  
+                      
+                    <h:outputLabel for="doctor" value="DOCTOR" />
+                    <p:autoComplete id="doctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
                         <p:column>
-                            #{m.idClinica}
+                            #{m.idDoctor}
                         </p:column>
                         <p:column>
                             #{m.nombre} 
