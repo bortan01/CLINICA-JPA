@@ -11,7 +11,7 @@
     </ui:define>
 
     <ui:define name="content">
-            <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
+        <h:form id="frmPaciente" acceptcharset="ISO-8859-1">
             <p:growl autoUpdate="true" showDetail="true"/>
             <p:messages autoUpdate="true" closable="true" showDetail="true"/>
             <p:dataTable id="tabla_paciente"  value="#{pacienteBean.listaPaciente}"  var="variable_paciente"         
@@ -50,7 +50,7 @@
                 <p:column headerText="CORREO" filterBy="#{variable_paciente.correo}">
                     <h:outputLabel value="#{variable_paciente.correo}"/>
                 </p:column>
-                
+
                 <p:column headerText="Acciones" style="width: 12%">
                     <p:panelGrid>
                         <p:column headerText="">
@@ -69,55 +69,44 @@
                         </p:column>
                     </p:panelGrid>
                 </p:column>
-               
-           </p:dataTable>
+
+            </p:dataTable>
         </h:form>
-        
-        <h:form id="formModificar">
-            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos del paciente" >
-                <p:panel header="Modificar">
+
+        <h:form id="formModificar"  >
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
+                <p:panel header="Modificar Paciente">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="nombre" value="NOMBRE"/>
+                                <p:outputLabel for="nombres" value="NOMBRE"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="nombre" value="#{pacienteBean.pacienteSeleccionado.nombre}"/>
+                                <p:inputText id="nombres" value="#{pacienteBean.pacienteSeleccionado.nombre}"/>
                             </p:column>
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel for="apelldo" value="APELLIDO"/>
-                            </p:column>
-                            <p:column>
-                                <h:outputText id="apelldo" value="#{pacienteBean.pacienteSeleccionado.apellido}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
+                         <p:row>
                             <p:column>
                                 <p:outputLabel for="direccion" value="DIRECCION"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}"/>
+                                <p:inputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}"/>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="edad" value="EDAD"/>
+                                <p:outputLabel for="EDAD" value="EDAD"/>
                             </p:column>
                             <p:column>
-                                <h:outputText id="edad" value="#{pacienteBean.pacienteSeleccionado.edad}"/>
+                                <p:inputText id="EDAD" value="#{pacienteBean.pacienteSeleccionado.edad}"/>
                             </p:column>
                         </p:row>
-                          <p:row>
+                        <p:row>
                             <p:column>
-                                <p:outputLabel value="GENERO"/>
+                                <p:outputLabel for="CORREO" value="CORREO"/>
                             </p:column>
                             <p:column>
-                                <p:selectOneMenu  value="#{pacienteBean.pacienteSeleccionado.sexo}">
-                                    <f:selectItem itemLabel="Seleccione genero"  itemValue="" />
-                                    <f:selectItems value="#{pacienteBean.opcionesGenero}" />
-                                </p:selectOneMenu>
+                                <p:inputText id="CORREO" value="#{pacienteBean.pacienteSeleccionado.correo}"/>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -125,31 +114,45 @@
                                 <h:outputLabel for="clinica" value="CLINICA" />
                             </p:column>
                             <p:column>
-                                <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">                                                                  
+                                <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeDoctorDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">
                                     <p:column>
-                                        #{m.idClinica}
+                                        #{w.idClinica}
                                     </p:column>
                                     <p:column>
-                                        #{m.nombre} 
+                                        #{w.nombre}
                                     </p:column>                                                         
-                                </p:autoComplete>  
+                                </p:autoComplete>
                             </p:column>
                         </p:row>
-
-
+                      
+                        
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
-                                                 actionListener="#{libroBean.actualizarLibro()}"/>
+                                                 actionListener="#{pacienteBean.actualizarPaciente()}"/>
                             </p:column>
                         </p:row>
+
                     </p:panelGrid>
                 </p:panel>
             </p:dialog>
         </h:form>
-        
-        
-        
+
+        <p:confirmDialog message="¿Realmente desea borrar el registro?" 
+                         header="Mensaje de confirmación"
+                         widgetVar="confirmacion" >
+            <h:form>
+                <p:commandButton id="confirm"
+                                 value="Si" 
+                                 oncomplete="PF('confirmacion').hide()" 
+                                 actionListener="#{pacienteBean.eliminarPaciente()}"/>
+
+                <p:commandButton id="decline" value="No" 
+                                 onclick="PF('confirmacion').hide()" 
+                                 type="button"/>
+            </h:form>
+        </p:confirmDialog>
+
     </ui:define>
 
     <ui:define name="bottom">
