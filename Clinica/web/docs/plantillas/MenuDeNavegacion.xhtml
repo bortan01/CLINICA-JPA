@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,7 +16,34 @@
         <table cellspacing="10px">
             <tr>
                 <td id="top">
-                    <ui:insert name="top">Top</ui:insert>
+                    <div id="top">
+            <h:form>
+                <center>
+                    <h2 >Sistema de Clinicas Hospitalarias</h2>
+                </center>
+                <p:menubar>
+                    <p:menuitem value="Home" url="/faces/index.xhtml" ></p:menuitem>
+                    <p:submenu label="CLINICAS" icon="ui-icon-document">
+                        <p:menuitem value="Nueva clinica" url="/faces/docs/clinica/registro_clinica.xhtml" icon="fa fa-fw fa-book"/>
+                        <p:menuitem value="Lista de clinicas" url="/faces/docs/clinica/listar_clinica.xhtml" icon="fa fa-fw fa-book"/>
+                    </p:submenu>
+                    <p:submenu label="DOCTORES" icon="ui-icon-document">
+                        <p:menuitem value="Nuevo doctor" url="/faces/docs/doctor/registrar_doctor.xhtml" icon="fa fa-fw fa-book"/>
+                        <p:menuitem value="Lista de doctores" url="/faces/docs/doctor/listar_doctor.xhtml" icon="fa fa-fw fa-book"/>
+                    </p:submenu>
+                    <p:submenu label="PASIENTES" icon="ui-icon-document">
+                        <p:menuitem value="Nuevo Pasiente" url="/faces/docs/paciente/registro_paciente.xhtml" icon="fa fa-fw fa-book"/>
+                        <p:menuitem value="Lista de pasientes" url="/faces/docs/paciente/listar_paciente.xhtml" icon="fa fa-fw fa-book"/>
+                    </p:submenu>
+                    <p:submenu label="CITAS" icon="ui-icon-document">
+                        <p:menuitem value="Nuevo cita" url="/faces/docs/cita/registro_cita.xhtml" icon="fa fa-fw fa-book"/>
+                        <p:menuitem value="Lista de citas" url="/faces/docs/cita/listar_cita.xhtml" icon="fa fa-fw fa-book"/>
+                    </p:submenu>
+                    
+                </p:menubar>
+            </h:form>
+            <ui:insert name="top"></ui:insert>
+        </div>
                 </td>
             </tr>
             <tr>
