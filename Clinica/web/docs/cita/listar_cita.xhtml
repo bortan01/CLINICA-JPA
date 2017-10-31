@@ -57,15 +57,15 @@
                             <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
                                              ajax="true" update="formModificar">
                                 <f:setPropertyActionListener 
-                                    target="#{doctorBean.doctorSeleccionado}" 
-                                    value="#{variable_doctor}"/>
+                                    target="#{citaBean.citaSeleccionada}" 
+                                    value="#{variable_cita}"/>
                             </p:commandButton>
                         </p:column>
                         <p:column>
                             <p:commandButton icon="ui-icon-trash" oncomplete="PF('confirmacion').show()" >
                                 <f:setPropertyActionListener 
-                                    target="#{doctorBean.doctorSeleccionado}" 
-                                    value="#{variable_doctor}"/>
+                                    target="#{citaBean.citaSeleccionada}" 
+                                    value="#{variable_cita}"/>
                             </p:commandButton>
                         </p:column>
                     </p:panelGrid>
@@ -84,61 +84,56 @@
                                 <p:outputLabel for="idDoctor" value="ID DE DOCTOR"/> <!-->el idAutor es de output text</!-->
                             </p:column>
                             <p:column>
-                                <h:outputText id="idDoctor" value="#{doctorBean.doctorSeleccionado.idDoctor}"/>
+                                <p:autoComplete id="idDoctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
+                        <p:column>
+                            #{m.idDoctor}
+                        </p:column>
+                        <p:column>
+                            #{m.nombre} 
+                        </p:column>                                                         
+                    </p:autoComplete>
                             </p:column>
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="nombres" value="NOMBRE"/>
+                                <p:outputLabel for="Id_paciente" value="PACIENTE"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="nombres" value="#{doctorBean.doctorSeleccionado.nombre}"/>
+                                <p:autoComplete id="Id_paciente" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
+                        <p:column>
+                            #{w.idPaciente}
+                        </p:column>
+                        <p:column>
+                            #{w.nombre}
+                        </p:column>                                                         
+                    </p:autoComplete>
                             </p:column>
                         </p:row>
                         <p:row>
 
                             <p:column>
-                                <p:outputLabel for="apellido" value="APELLIDO"/>
+                                <p:outputLabel  value="FECHA"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="apellido" value="#{doctorBean.doctorSeleccionado.apellido}"/>
+                               <p:calendar value="#{citaBean.citaSeleccionada.fecha}" locale="de" 
+                                navigator="true" pattern="dd-MM-yyyy" />
                             </p:column>
 
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="direccion" value="DIRECCION"/>
+                                <p:outputLabel for="estado" value="ESTADO"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="direccion" value="#{doctorBean.doctorSeleccionado.direccion}"/>
+                                <p:inputText id="estado" value="PENDIENTE"/>
                             </p:column>
 
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel for="edad" value="EDAD"/>
-                            </p:column>
-                            <p:column>
-                                <p:inputText id="edad" value="#{doctorBean.doctorSeleccionado.edad}"/>
-                            </p:column>
-                        </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="GENERO"/>
-                            </p:column>
-                            <p:column>
-                                <p:selectOneMenu  value="#{doctorBean.doctorSeleccionado.sexo}">
-                                    <f:selectItem itemLabel="Seleccione genero"  itemValue="" />
-                                    <f:selectItems value="#{doctorBean.opcionesGenero}" />
-                                </p:selectOneMenu>
-                            </p:column>
-                        </p:row>
-
-
+                        
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
-                                                 actionListener="#{doctorBean.actualizarDoctor()}"/>
+                                                 actionListener="#{citaBean.actualizarCita()}"/>
                             </p:column>
                         </p:row>
 
@@ -154,7 +149,7 @@
                 <p:commandButton id="confirm"
                                  value="Si" 
                                  oncomplete="PF('confirmacion').hide()" 
-                                 actionListener="#{doctorBean.eliminarDoctor()}"/>
+                                 actionListener="#{citaBean.eliminarCita()}"/>
 
                 <p:commandButton id="decline" value="No" 
                                  onclick="PF('confirmacion').hide()" 
