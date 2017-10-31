@@ -5,12 +5,14 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import modelo.entidades.Paciente;
 import session.beans.PacienteFacade;
+import utils.general.AutoCompleteBeanClinica;
 
 
 @ManagedBean (name ="pacienteBean")
@@ -18,6 +20,11 @@ import session.beans.PacienteFacade;
 public class PacienteBean implements Serializable{
 @Inject
 PacienteFacade PacienteFac;
+
+@ManagedProperty("#{autoCompleteBeanClinica}")
+    AutoCompleteBeanClinica auC;
+
+
 Paciente PacienteSeleccionado ;    
 List<Paciente> listaPaciente;
 List<Paciente> PacienteFiltrado;
@@ -46,13 +53,15 @@ public String eliminarPaciente() {
     }
     
     public String actualizarPaciente() {
+        PacienteSeleccionado.setIdClinica(auC.getClinica());
         PacienteFac.edit(PacienteSeleccionado);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "informacion", "Datos Modificados"));
         return "listar_paciente.xhtml?faces-redirect=true";
     }
   public String insertarPaciente() {
+      PacienteSeleccionado.setIdClinica(auC.getClinica());
         PacienteFac.create(PacienteSeleccionado);
-            return "listar_paciente.xhtml?faces-redirect=true";
+         return "listar_paciente.xhtml?faces-redirect=true";
     }
 
     public PacienteFacade getPacienteFac() {
@@ -102,6 +111,14 @@ public String eliminarPaciente() {
 
     public void setOpcionActualGenero(String opcionActualGenero) {
         this.opcionActualGenero = opcionActualGenero;
+    }
+
+    public AutoCompleteBeanClinica getAuC() {
+        return auC;
+    }
+
+    public void setAuC(AutoCompleteBeanClinica auC) {
+        this.auC = auC;
     }
 
 

@@ -85,13 +85,13 @@
                             </p:column>
                             <p:column>
                                 <p:autoComplete id="idDoctor" value="#{autoCompleteBeanDoctor.doctor}" completeMethod="#{autoCompleteBeanDoctor.completeDoctorDespacho}" var="m" itemLabel="#{m.nombre}" itemValue="#{m}" converter="convertidorDoctor" forceSelection="true" dropdown="true">                                                                  
-                        <p:column>
-                            #{m.idDoctor}
-                        </p:column>
-                        <p:column>
-                            #{m.nombre} 
-                        </p:column>                                                         
-                    </p:autoComplete>
+                                    <p:column>
+                                        #{m.idDoctor}
+                                    </p:column>
+                                    <p:column>
+                                        #{m.nombre} 
+                                    </p:column>                                                         
+                                </p:autoComplete>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -100,13 +100,13 @@
                             </p:column>
                             <p:column>
                                 <p:autoComplete id="Id_paciente" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
-                        <p:column>
-                            #{w.idPaciente}
-                        </p:column>
-                        <p:column>
-                            #{w.nombre}
-                        </p:column>                                                         
-                    </p:autoComplete>
+                                    <p:column>
+                                        #{w.idPaciente}
+                                    </p:column>
+                                    <p:column>
+                                        #{w.nombre}
+                                    </p:column>                                                         
+                                </p:autoComplete>
                             </p:column>
                         </p:row>
                         <p:row>
@@ -115,8 +115,8 @@
                                 <p:outputLabel  value="FECHA"/>
                             </p:column>
                             <p:column>
-                               <p:calendar value="#{citaBean.citaSeleccionada.fecha}" locale="de" 
-                                navigator="true" pattern="dd-MM-yyyy" />
+                                <p:calendar value="#{citaBean.citaSeleccionada.fecha}" locale="de" 
+                                            navigator="true" pattern="dd-MM-yyyy" />
                             </p:column>
 
                         </p:row>
@@ -129,7 +129,7 @@
                             </p:column>
 
                         </p:row>
-                        
+
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
