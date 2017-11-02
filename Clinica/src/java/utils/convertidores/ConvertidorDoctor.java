@@ -17,7 +17,7 @@ public class ConvertidorDoctor implements Converter {
         if(value != null && value.trim().length() > 0) {
            ListaDoctor  service = (ListaDoctor) context.getExternalContext().getSessionMap().get("listaDoctor");
             for(int i=0; i<service.getListaDoctor().size(); i++){
-                if(service.getListaDoctor().get(i).getIdDoctor().equals(value))
+                if(service.getListaDoctor().get(i).getIdDoctor() == Integer.parseInt(value));
                     pos=i;
             }
             return service.getListaDoctor().get(pos);

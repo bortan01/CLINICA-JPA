@@ -17,7 +17,7 @@ public class ConvertidorClinica implements Converter {
         if(value != null && value.trim().length() > 0) {
            ListaClinica  service = (ListaClinica) context.getExternalContext().getSessionMap().get("listaClinica");
             for(int i=0; i<service.getListaClinica().size(); i++){
-                if(service.getListaClinica().get(i).getIdClinica().equals(value))
+                if(service.getListaClinica().get(i).getIdClinica() == Integer.parseInt(value));
                     pos=i;
             }
             return service.getListaClinica().get(pos);
