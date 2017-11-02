@@ -21,7 +21,10 @@ public class AutoCompleteBeanPaciente implements Serializable {
         List<Paciente> allPaciente = getpacienteDataxxx().getListaPaciente();
         List<Paciente> filterPaciente = new ArrayList<Paciente>();
         for (Paciente pacienteSelected : allPaciente) {
-            if (pacienteSelected.getNombre().toLowerCase().startsWith(query) || pacienteSelected.getApellido().toLowerCase().startsWith(query)  || pacienteSelected.getDireccion().toLowerCase().startsWith(query)) {
+            if (pacienteSelected.getNombre().toLowerCase().startsWith(query) || 
+                    pacienteSelected.getApellido().toLowerCase().startsWith(query)  || 
+                    pacienteSelected.getDireccion().toLowerCase().startsWith(query)
+                    ) {
                 filterPaciente.add(pacienteSelected);
             }
         }
