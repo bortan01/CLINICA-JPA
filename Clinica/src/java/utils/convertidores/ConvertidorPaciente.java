@@ -13,14 +13,14 @@ public class ConvertidorPaciente implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        int pos=0;
+        Paciente pos = null;
         if(value != null && value.trim().length() > 0) {
            ListaPaciente  service = (ListaPaciente) context.getExternalContext().getSessionMap().get("listaPaciente");
             for(int i=0; i<service.getListaPaciente().size(); i++){
-                if(service.getListaPaciente().get(i).getIdPaciente().equals(value))
-                    pos=i;
+                if(service.getListaPaciente().get(i).getIdPaciente() == Integer.parseInt(value))
+                    pos= service.getListaPaciente().get(i);
             }
-            return service.getListaPaciente().get(pos);
+            return pos;
         }
         else {
             return null;

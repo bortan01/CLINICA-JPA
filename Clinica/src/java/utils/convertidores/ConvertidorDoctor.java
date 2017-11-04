@@ -13,19 +13,20 @@ public class ConvertidorDoctor implements Converter {
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        int pos=0;
+        Doctor pos= null;
         if(value != null && value.trim().length() > 0) {
            ListaDoctor  service = (ListaDoctor) context.getExternalContext().getSessionMap().get("listaDoctor");
-            for(int i=0; i<service.getListaDoctor().size(); i++){
-                if(service.getListaDoctor().get(i).getIdDoctor() == Integer.parseInt(value));
-                    pos=i;
+             for(int i=0; i<service.getListaDoctor().size(); i++){
+                if(service.getListaDoctor().get(i).getIdDoctor() == Integer.parseInt(value))
+                    pos= service.getListaDoctor().get(i);
             }
-            return service.getListaDoctor().get(pos);
+            return pos;
         }
         else {
             return null;
         }        
     }
+
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {

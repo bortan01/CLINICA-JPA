@@ -15,11 +15,11 @@ import utils.lista.ListaDoctor;
 public class AutoCompleteBeanDoctor implements Serializable {
 
     @ManagedProperty("#{listaDoctor}")
-    ListaDoctor doctorData;
+    ListaDoctor doctordatax;
     Doctor doctor;
 
     public List<Doctor> completeDoctorDespacho(String query) {
-        List<Doctor> allDoctor = getdoctorData().getListaDoctor();
+        List<Doctor> allDoctor = getdoctordatax().getListaDoctor();
         List<Doctor> filterDoctor = new ArrayList<Doctor>();
         for (Doctor doctorSelected : allDoctor) {
             if (doctorSelected.getNombre().toLowerCase().startsWith(query) || doctorSelected.getApellido().toLowerCase().startsWith(query)  || doctorSelected.getDireccion().toLowerCase().startsWith(query)) {
@@ -29,12 +29,12 @@ public class AutoCompleteBeanDoctor implements Serializable {
         return filterDoctor;
     }
 
-    public ListaDoctor getdoctorData() {
-        return doctorData;
+    public ListaDoctor getdoctordatax() {
+        return doctordatax;
     }
 
-    public void setdoctorData(ListaDoctor doctorData) {
-        this.doctorData = doctorData;
+    public void setdoctordatax(ListaDoctor doctordatax) {
+        this.doctordatax = doctordatax;
     }
 
     public Doctor getDoctor() {
