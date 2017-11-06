@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import modelo.entidades.Cita;
 import session.beans.CitaFacade;
@@ -31,6 +32,11 @@ CitaFacade citaFac;
 Cita citaSeleccionada ;    
 List<Cita> listaCita;
 List<Cita> ClinicaFiltrada;
+
+private SelectItem[] opcionEstado = new SelectItem[]{new SelectItem("PENDIENTE"),
+        new SelectItem("FINALIZADO")};
+    private String opcionActualEstado;
+
 
  @PostConstruct
     public void init() {
@@ -113,6 +119,22 @@ public String eliminarCita() {
 
     public void setAuP(AutoCompleteBeanPaciente auP) {
         this.auP = auP;
+    }
+
+    public SelectItem[] getOpcionEstado() {
+        return opcionEstado;
+    }
+
+    public void setOpcionEstado(SelectItem[] opcionEstado) {
+        this.opcionEstado = opcionEstado;
+    }
+
+    public String getOpcionActualEstado() {
+        return opcionActualEstado;
+    }
+
+    public void setOpcionActualEstado(String opcionActualEstado) {
+        this.opcionActualEstado = opcionActualEstado;
     }
 
     

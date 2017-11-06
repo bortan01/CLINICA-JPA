@@ -128,12 +128,15 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="estado" value="ESTADO"/>
+                                <p:outputLabel value="ESTADO"/>
                             </p:column>
                             <p:column>
-                                <p:inputText id="estado" value="PENDIENTE"/>
+                                <p:selectOneMenu  value="#{variable_cita.estado == 1? 'PENDIENTE':'FINALIZADO'}">
+                                    <f:selectItem itemLabel="CAMBIO DE ESTADO"  itemValue="" />
+                                    <f:selectItems itemLabel="PENDIENTE" itemValue="" />
+                                    <f:selectItems value="#{citaBean.opcionEstado}" />
+                                </p:selectOneMenu>
                             </p:column>
-
                         </p:row>
 
                         <p:row>
