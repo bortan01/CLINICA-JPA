@@ -54,7 +54,9 @@
                         <p:column headerText="">
                             <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
                                              ajax="true" update="formModificar">
-                                <f:setPropertyActionListener target="#{citaBean.citaSeleccionada}" value="#{variable_cita}"/>
+                                <f:setPropertyActionListener 
+                                    target="#{citaBean.citaSeleccionada}" 
+                                    value="#{variable_cita}"/>
                             </p:commandButton>
                         </p:column>
                         <p:column>
@@ -92,17 +94,17 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel for="paciente_id" value="PACIENTE" />
+                                 <h:outputLabel for="paciente_id" value="PACIENTE" />
                             </p:column>
                             <p:column>
-                                <p:autoComplete id="paciente_id" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="z" itemLabel="#{z.nombre}" itemValue="#{z}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
-                                    <p:column>
-                                        #{z.idPaciente}
-                                    </p:column>
-                                    <p:column>
-                                        #{z.nombre}
-                                    </p:column>                                                         
-                                </p:autoComplete>
+                               <p:autoComplete id="paciente_id" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="z" itemLabel="#{z.nombre}" itemValue="#{z}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
+                        <p:column>
+                            #{z.idPaciente}
+                        </p:column>
+                        <p:column>
+                            #{z.nombre}
+                        </p:column>                                                         
+                    </p:autoComplete>
                             </p:column>
                         </p:row>
                         <p:row>
