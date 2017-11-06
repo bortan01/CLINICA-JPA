@@ -56,8 +56,13 @@
                         <p:column headerText="">
                             <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgModificar').show();"
                                              ajax="true" update="formModificar">
-                                <f:setPropertyActionListener target="#{pacienteBean.pacienteSeleccionado}" value="#{variable_paciente}"/>
-                                <f:setPropertyActionListener target="#{autoCompleteBeanClinica.clinica}" value="#{variable_paciente.idClinica}" />  
+                                <f:setPropertyActionListener
+                                    target="#{pacienteBean.pacienteSeleccionado}"
+                                    value="#{variable_paciente}"/>
+
+                                <f:setPropertyActionListener
+                                    target="#{autoCompleteBeanClinica.clinica}" 
+                                    value="#{variable_paciente.idClinica}" />  
                             </p:commandButton>
                         </p:column>
                         <p:column>
@@ -85,7 +90,7 @@
                                 <p:inputText id="nombres" value="#{pacienteBean.pacienteSeleccionado.nombre}"/>
                             </p:column>
                         </p:row>
-                         <p:row>
+                        <p:row>
                             <p:column>
                                 <p:outputLabel for="direccion" value="DIRECCION"/>
                             </p:column>
@@ -114,7 +119,7 @@
                                 <h:outputLabel for="clinica" value="CLINICA" />
                             </p:column>
                             <p:column>
-                                <p:autoComplete id="clinica" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeDoctorDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{m}" converter="convertidorClinica" forceSelection="true" dropdown="true">
+                                <p:autoComplete id="registro_paciente" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorClinica" forceSelection="true" dropdown="true">
                                     <p:column>
                                         #{w.idClinica}
                                     </p:column>
@@ -124,8 +129,8 @@
                                 </p:autoComplete>
                             </p:column>
                         </p:row>
-                      
-                        
+
+
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"

@@ -57,6 +57,14 @@
                                 <f:setPropertyActionListener 
                                     target="#{citaBean.citaSeleccionada}" 
                                     value="#{variable_cita}"/>
+                                
+                                <f:setPropertyActionListener 
+                                    target="#{autoCompleteBeanDoctor.doctor}" 
+                                    value="#{variable_cita.idDoctor}"/>
+                                
+                                <f:setPropertyActionListener 
+                                    target="#{autoCompleteBeanPaciente.paciente}" 
+                                    value="#{variable_cita.idPaciente}"/>
                             </p:commandButton>
                         </p:column>
                         <p:column>
