@@ -126,26 +126,22 @@
                             </p:column>
 
                         </p:row>
-                        <p:row>
-                            <p:column>
-                                <p:outputLabel value="ESTADO"/>
-                            </p:column>
-                            <p:column>
-                                <p:selectOneMenu  value="#{variable_cita.estado == 1? 'PENDIENTE':'FINALIZADO'}">
-                                    <f:selectItem itemLabel="CAMBIO DE ESTADO"  itemValue="" />
-                                    <f:selectItems itemLabel="PENDIENTE" itemValue="" />
-                                    <f:selectItems value="#{citaBean.opcionEstado}" />
-                                </p:selectOneMenu>
-                            </p:column>
-                        </p:row>
+                       
 
                         <p:row>
                             <p:column>
                                 <h:commandButton value="Guardar cambios"
                                                  actionListener="#{citaBean.actualizarCita()}"/>
                             </p:column>
+                            
+                            <p:column>
+                                <h:commandButton value="FINALIZAR CONSULTA"
+                                                 actionListener="#{citaBean.actualizarEstado()}"/>
+                            </p:column>
                         </p:row>
-
+                       
+                            
+                        
                     </p:panelGrid>
                 </p:panel>
             </p:dialog>

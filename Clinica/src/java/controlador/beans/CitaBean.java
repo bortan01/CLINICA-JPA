@@ -33,8 +33,8 @@ Cita citaSeleccionada ;
 List<Cita> listaCita;
 List<Cita> ClinicaFiltrada;
 
-private SelectItem[] opcionEstado = new SelectItem[]{new SelectItem("PENDIENTE"),
-        new SelectItem("FINALIZADO")};
+private SelectItem[] opcionEstado = new SelectItem[]{new SelectItem(1),
+        new SelectItem(0)};
     private String opcionActualEstado;
 
 
@@ -66,6 +66,16 @@ public String eliminarCita() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "informacion", "Datos Modificados"));
         return "listar_cita.xhtml?faces-redirect=true";
     }
+    
+    public String actualizarEstado() {
+      
+        citaSeleccionada.setEstado(0);
+        citaFac.edit(citaSeleccionada);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "informacion", "Datos Modificados"));
+        return "listar_cita.xhtml?faces-redirect=true";
+    }
+    
+    
   public String insertarCita() {
       citaSeleccionada.setIdDoctor(auD.getDoctor());
         citaSeleccionada.setIdPaciente(auP.getPaciente());
