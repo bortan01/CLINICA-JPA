@@ -7,28 +7,28 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="top">
-        top
+        VETERINARIA
     </ui:define>
 
     <ui:define name="content">
         <h:form>
-            <p:panel header="Nuevo Paciente">
+            <p:panel header="Nueva Mascota">
                 <p:panelGrid columns="2" style="width: 100%">
                     <h:outputLabel for="nombre" value="NOMBRE" />
                     <p:inputText id="nombre" value="#{pacienteBean.pacienteSeleccionado.nombre}" required="true" label="NOMBRE" />
-                    <h:outputLabel for="direccion" value="DIRECCION" />
+                    <h:outputLabel for="direccion" value="TIPO Y RAZA" />
                     <p:inputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}" required="true" label="DIRECCION"/> 
                     <h:outputLabel for="edad" value="EDAD" />
                     <p:inputText id="edad" value="#{pacienteBean.pacienteSeleccionado.edad}" required="true" label="EDAD" />
-                    <h:outputLabel for="correo" value="CORREO" />
+                    <h:outputLabel for="correo" value="PESO" />
                     <p:inputText id="correo" value="#{pacienteBean.pacienteSeleccionado.correo}" required="true" label="CORREO"/> 
-                    <p:outputLabel value="sexo"/>
+                    <p:outputLabel value="SEXO"/>
                     <p:selectOneMenu  value="#{pacienteBean.pacienteSeleccionado.sexo}">
                         <f:selectItem itemLabel="Seleccione tipo de genero"  itemValue="" />
                         <f:selectItems value="#{pacienteBean.opcionesGenero}" />
                     </p:selectOneMenu>
                       
-                    <h:outputLabel for="registro_paciente" value="CLINICA" />
+                    <h:outputLabel for="registro_paciente" value="DUENO" />
                     <p:autoComplete id="registro_paciente" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorClinica" forceSelection="true" dropdown="true">
                         <p:column>
                             #{w.idClinica}
@@ -53,7 +53,7 @@
     </ui:define>
 
     <ui:define name="bottom">
-        bottom
+     UES
     </ui:define>
 
 </ui:composition>

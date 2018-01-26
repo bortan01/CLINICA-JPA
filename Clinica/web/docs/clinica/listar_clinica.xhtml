@@ -70,12 +70,12 @@
 
         <!-->el idAutor es de output text</!-->
         <h:form id="formModificar"  >
-            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Clinica" >
-                <p:panel header="Modificar Clinica">
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos del Dueno" >
+                <p:panel header="Modificar Dueno">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="idClinica" value="ID DE CLINICA"/> <!-->el idAutor es de output text</!-->
+                                <p:outputLabel for="idClinica" value="ID DE DUENO"/> <!-->el idAutor es de output text</!-->
                             </p:column>
                             <p:column>
                                 <h:outputText id="idClinica" value="#{clinicaBean.clinicaSeleccionada.idClinica}"/>
@@ -83,7 +83,7 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="nombres" value="NOMBRE DE CLINICA"/>
+                                <p:outputLabel for="nombres" value="NOMBRE DE DUENO"/>
                             </p:column>
                             <p:column>
                                 <p:inputText id="nombres" value="#{clinicaBean.clinicaSeleccionada.nombre}"/>
@@ -92,7 +92,7 @@
                         <p:row>
 
                             <p:column>
-                                <p:outputLabel for="localizacion" value="LOCALIZACION DE CLINICA"/>
+                                <p:outputLabel for="localizacion" value="LOCALIZACION"/>
                             </p:column>
                             <p:column>
                                 <p:inputText id="localizacion" value="#{clinicaBean.clinicaSeleccionada.localizacion}"/>

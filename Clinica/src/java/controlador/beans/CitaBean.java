@@ -1,20 +1,53 @@
 package controlador.beans;
 
+//import java.io.IOException;
+//import java.io.InputStream;
+//import java.io.Serializable;
+//import java.util.HashMap;
+//import java.util.List;
+//import java.util.Map;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
+//import javax.annotation.PostConstruct;
+//import javax.faces.application.FacesMessage;
+//import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+//import javax.faces.bean.ViewScoped;
+//import javax.faces.context.FacesContext;
+//import javax.faces.model.SelectItem;
+//import javax.inject.Inject;
+//import javax.servlet.ServletOutputStream;
+//import javax.servlet.http.HttpServletResponse;
+import modelo.entidades.Cita;
+//import net.sf.jasperreports.engine.JRException;
+//import net.sf.jasperreports.engine.JasperRunManager;
+//import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import session.beans.CitaFacade;
+import utils.general.AutoCompleteBeanDoctor;
+import utils.general.AutoCompleteBeanPaciente;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
-import modelo.entidades.Cita;
-import session.beans.CitaFacade;
-import utils.general.AutoCompleteBeanDoctor;
-import utils.general.AutoCompleteBeanPaciente;
-        
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperRunManager;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+
+
 
 @ManagedBean (name ="citaBean")
 @ViewScoped
@@ -147,6 +180,36 @@ public String eliminarCita() {
         this.opcionActualEstado = opcionActualEstado;
     }
 
+    public void mostrarPDF() throws JRException{
+       FacesContext context = FacesContext.getCurrentInstance();
+HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
+Map<String,Object> parametros;
+        parametros = new HashMap<>();
+parametros.put("", "");
+//pega o caminho do arquivo .jasper da aplicação
+
+
+InputStream reportStream = context.getExternalContext().getResourceAsStream("/docs/reportes/mascotaCita.jasper");
+    //File jasper =new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath("/ReporteAlumnos.jasper"));
+    //JasperPrint jasperPrint =  JasperFillManager.fillReport(reportStream, null, new JRBeanCollectionDataSource(this.getLstAlumno()));
+    byte[] bytes= JasperRunManager.runReportToPdf(reportStream, parametros,new JRBeanCollectionDataSource(this.listaCita));
+    //HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+    response.setContentType("application/pdf");
+    response.setContentLength(bytes.length);
+    ServletOutputStream stream;
+        try {
+            stream = response.getOutputStream();
+            stream.write(bytes, 0, bytes.length);
+            //JasperExportManager.exportReportToPdfStream(jasperPrint2, stream);
+    stream.flush();
+    stream.close();
+        } catch (IOException ex) {
+            Logger.getLogger(CitaBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
+    
+    FacesContext.getCurrentInstance().responseComplete();
+    
+    }
 
 }

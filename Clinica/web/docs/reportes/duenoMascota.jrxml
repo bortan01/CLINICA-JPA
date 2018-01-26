@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1afbe7ea-12f7-4bd3-8c4d-1a00001cf4a3">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     paciente."id_paciente" AS paciente_id_paciente,
+     paciente."nombre" AS paciente_nombre,
+     paciente."direccion" AS paciente_direccion,
+     paciente."sexo" AS paciente_sexo,
+     paciente."edad" AS paciente_edad,
+     paciente."correo" AS peso,
+     clinica."nombre" AS clinica_nombre,
+     clinica."localizacion" AS clinica_localizacion,
+     paciente."id_clinica" AS paciente_id_clinica
+FROM
+     "public"."clinica" clinica INNER JOIN "public"."paciente" paciente ON clinica."id_clinica" = paciente."id_clinica"]]>
+	</queryString>
+	<field name="paciente_id_paciente" class="java.lang.Integer"/>
+	<field name="paciente_nombre" class="java.lang.String"/>
+	<field name="paciente_direccion" class="java.lang.String"/>
+	<field name="paciente_sexo" class="java.lang.String"/>
+	<field name="paciente_edad" class="java.lang.Integer"/>
+	<field name="peso" class="java.lang.String"/>
+	<field name="clinica_nombre" class="java.lang.String"/>
+	<field name="clinica_localizacion" class="java.lang.String"/>
+	<field name="paciente_id_clinica" class="java.lang.Integer"/>
+	<group name="paciente_id_clinica">
+		<groupExpression><![CDATA[$F{paciente_id_clinica}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement style="SubTitle" x="47" y="13" width="506" height="24" forecolor="#CC0000" uuid="46687c32-3a6e-4ba0-b900-2e56a79563a4"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{paciente_id_clinica}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement mode="Opaque" x="0" y="13" width="36" height="24" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="e90785fb-cba4-4027-a3db-52003a2a377a"/>
+				</rectangle>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="0645c211-271f-4f2d-bdf9-756e78033195"/>
+				<imageExpression><![CDATA["leaf_banner_red.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="a3860132-1127-4bd4-80e4-d9d52245df8e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Resporte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="ff735576-4c3a-4ebf-bdec-8ce5c0d96103"/>
+				<text><![CDATA[Dueno-Paciente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="6f4fee57-ff2b-4752-b784-486643b024ba"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="69" height="15" uuid="af9cef93-fb7c-4427-be3a-d4c034bc0de7"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="13" y="21" width="104" height="15" uuid="19a8a04d-a8b6-4e76-a1a7-94b3e3104f9c"/>
+				<text><![CDATA[Nombre Mascota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="19" width="69" height="15" uuid="42f56f5e-5fa7-403d-85ec-08d44cb71bd6"/>
+				<text><![CDATA[Tipo-Raza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="207" y="19" width="69" height="15" uuid="b4894027-d483-48a2-8c53-65284f1e10ba"/>
+				<text><![CDATA[sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="19" width="69" height="15" uuid="5f9ac2e8-ae44-4ae8-9169-c3ebd64d0b64"/>
+				<text><![CDATA[Edad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="345" y="19" width="69" height="15" uuid="56029de3-d823-4b2f-a7b5-bcb24bdd5098"/>
+				<text><![CDATA[Peso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="19" width="69" height="15" uuid="41fb685e-8489-4e45-a9bc-345cef7b3409"/>
+				<text><![CDATA[Dueno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="19" width="69" height="15" uuid="f3093ee2-6fb0-4c92-a923-2dc23b52db5a"/>
+				<text><![CDATA[Direccion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="c0dfa6a4-f79c-4a6f-bd90-df13bc3a5bda"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="13" y="1" width="69" height="15" uuid="57d4be6c-222b-425c-a0dc-30dbe330e918"/>
+				<textFieldExpression><![CDATA[$F{paciente_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="0" width="69" height="15" uuid="6faf983f-26d3-4077-bdbd-51b395e586c2"/>
+				<textFieldExpression><![CDATA[$F{paciente_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="207" y="0" width="69" height="15" uuid="e2423f46-b1ba-4384-ab27-988750ffc70f"/>
+				<textFieldExpression><![CDATA[$F{paciente_sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="0" width="69" height="15" uuid="1beb9079-6f05-4a09-856e-1b31093378b1"/>
+				<textFieldExpression><![CDATA[$F{paciente_edad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="345" y="0" width="69" height="15" uuid="a53f2ebf-472c-4bce-80eb-2c2af97ba98a"/>
+				<textFieldExpression><![CDATA[$F{peso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="0" width="69" height="15" uuid="b04756a5-3f06-4da3-bd11-7e3b0f2a5d76"/>
+				<textFieldExpression><![CDATA[$F{clinica_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="483" y="0" width="69" height="15" uuid="fbeb741a-f4b1-459c-8ab7-fe6d4c62ea1a"/>
+				<textFieldExpression><![CDATA[$F{clinica_localizacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="2ed777f0-6e90-4b21-ba51-601524316b8a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="76c1c05b-dfcf-4522-937f-91b2c1fe9378"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="c3829882-1b6b-4b7a-a45b-1ee421758474"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="abf9da65-2b69-4019-8323-316372a2194a"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

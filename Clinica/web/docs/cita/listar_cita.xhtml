@@ -29,10 +29,11 @@
                                      onkeyup="PF('wTablaCita').filter()"/>
                         <p:commandButton action="registro_cita.xhtml?faces-redirect=true"
                                          icon="ui-icon-circle-plus"/>
+                        <p:commandButton value="Ver Reporte" ajax="false" actionListener="#{citaBean.mostrarPDF()}"/>
                     </p:outputPanel>                    
                 </f:facet>
 
-                <p:column headerText="PACIENTE" filterBy="#{variable_cita.idPaciente.nombre}">
+                <p:column headerText="Mascota" filterBy="#{variable_cita.idPaciente.nombre}">
                     <h:outputLabel value="#{variable_cita.idPaciente.nombre}"/>
                 </p:column>
                 <p:column headerText="DOCTOR" filterBy="#{variable_cita.idDoctor.nombre}">
@@ -102,7 +103,7 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                 <h:outputLabel for="paciente_id" value="PACIENTE" />
+                                 <h:outputLabel for="paciente_id" value="MASCOTA" />
                             </p:column>
                             <p:column>
                                <p:autoComplete id="paciente_id" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="z" itemLabel="#{z.nombre}" itemValue="#{z}" converter="convertidorPaciente" forceSelection="true" dropdown="true">

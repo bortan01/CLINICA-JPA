@@ -11,14 +11,14 @@
     </ui:define>
     <ui:define name="content">
         <h:form>
-            <p:panel  header="Nueva Clinica">
+            <p:panel  header="Nuevo Cliente">
                 <p:panelGrid  columns="2" style="width:100%">
                     
-                    <p:outputLabel style="width: 40px;" value="Nombre de Clinica"/>
+                    <p:outputLabel style="width: 40px;" value="Nombre del cliente"/>
                     <p:inputText value="#{clinicaBean.clinicaSeleccionada.nombre}"/>
 
 
-                    <p:outputLabel value="Direccion de la Clinica"/>
+                    <p:outputLabel value="Direccion del cliente"/>
                     <p:inputText value="#{clinicaBean.clinicaSeleccionada.localizacion}"
                                  size="30" required="true" 
                                  style="width:1080px;margin-left:-4px;" id="nombre">                         

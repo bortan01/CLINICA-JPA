@@ -7,29 +7,26 @@
         <title>CLINICA HOSPITALARIA</title>
     </h:head>
     <h:body >
-        <h1 align="center" style="color: #ffffff" >
-            SISTEMA DE PRESTAMO DE LIBROS
+        <h1 align="center" style="color: BLUE " >
+            SISTEMA DE CLINICA VETERINARIA
             <img align="middle" src="http://www.ues.edu.sv/october/storage/app/media/minerva2.png" width="100" />
         </h1>
         <center>
-            <img src="http://www.qslspain.es/IMAGENES/LIBROS.png" width="450" />
+            <img src="/Clinica/resources/icon/1.jpeg" width="450" />
         </center>
-        <br></br>        
-        <p:dock itemWidth="55" position="top" maxWidth="100" proximity="50" >
-            <p:menuitem style="color: #dddddd" outcome="docs/clinica/listar_clinica" value="LISTA DE CLINICAS" 
-                        icon="/resources/icon/iconmonstr-pen-12-icon-256.png"  />
+        <br></br>   
+        
+        <h3 align="center" style="color: BLUE " >
+            POCIONES 
+        </h3>
+        <p:dock itemWidth="55" position="top" maxWidth="100" proximity="70" >
+            <p:menuitem style="color: black" outcome="docs/paciente/registro_paciente" value="AGREGAR MASCOTA" 
+                        icon="/resources/icon/perro.jpg"  />
             
-            <p:menuitem style="color: #dddddd" outcome="docs/doctor/listar_doctor" value="LISTA DE DOCTORES" 
-                        icon="/resources/icon/iconmonstr-pen-12-icon-256.png"  />
+            <p:menuitem style="color: black" outcome="docs/clinica/registro_clinica" value="AGREGAR DUENO" 
+                        icon="/resources/icon/persona.jpg"  />
             
-             <p:menuitem style="color: #dddddd" outcome="docs/paciente/listar_paciente" value="LISTA DE PACIENTES" 
-                        icon="/resources/icon/iconmonstr-pen-12-icon-256.png"  />
-             
-             <p:menuitem style="color: #dddddd" outcome="docs/cita/listar_cita" value="LISTA DE CITA" 
-                        icon="/resources/icon/iconmonstr-pen-12-icon-256.png"  />
-             
-
-
+            
         </p:dock>       
     </h:body>
 </html>

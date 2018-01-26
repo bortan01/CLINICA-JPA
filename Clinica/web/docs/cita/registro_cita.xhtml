@@ -14,7 +14,7 @@
             <p:panel  header="Nueva Cita">
                 <p:panelGrid  columns="2" style="width:100%">
 
-                    <h:outputLabel for="paciente_id" value="PACIENTE" />
+                    <h:outputLabel for="paciente_id" value="MASCOTA" />
                     <p:autoComplete id="paciente_id" value="#{autoCompleteBeanPaciente.paciente}" completeMethod="#{autoCompleteBeanPaciente.completePacienteDespacho}" var="z" itemLabel="#{z.nombre}" itemValue="#{z}" converter="convertidorPaciente" forceSelection="true" dropdown="true">
                         <p:column>
                             #{z.idPaciente}

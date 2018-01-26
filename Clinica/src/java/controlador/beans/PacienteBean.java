@@ -28,8 +28,8 @@ PacienteFacade PacienteFac;
 Paciente PacienteSeleccionado ;    
 List<Paciente> listaPaciente;
 List<Paciente> PacienteFiltrado;
-private SelectItem[] opcionesGenero = new SelectItem[]{new SelectItem("MASCULINO"),
-        new SelectItem("FEMENINO")};
+private SelectItem[] opcionesGenero = new SelectItem[]{new SelectItem("MACHO"),
+        new SelectItem("HEMBRA")};
     private String opcionActualGenero;
 
  @PostConstruct

@@ -35,10 +35,10 @@
                 <p:column headerText="NOMBRE" filterBy="#{variable_paciente.nombre}">
                     <h:outputLabel value="#{variable_paciente.nombre}"/>
                 </p:column>
-                <p:column headerText="CLINICA" filterBy="#{variable_paciente.idClinica.nombre}">
+                <p:column headerText="DUENO" filterBy="#{variable_paciente.idClinica.nombre}">
                     <h:outputLabel value="#{variable_paciente.idClinica.nombre}"/>
                 </p:column>
-                <p:column headerText="DIRECCION" filterBy="#{variable_paciente.direccion}">
+                <p:column headerText="TIPO Y RAZA" filterBy="#{variable_paciente.direccion}">
                     <h:outputLabel value="#{variable_paciente.direccion}"/>
                 </p:column>
                 <p:column headerText="EDAD" filterBy="#{variable_paciente.edad}">
@@ -47,7 +47,7 @@
                 <p:column headerText="SEXO" filterBy="#{variable_paciente.sexo}">
                     <h:outputLabel value="#{variable_paciente.sexo}"/>
                 </p:column>
-                <p:column headerText="CORREO" filterBy="#{variable_paciente.correo}">
+                <p:column headerText="PESO" filterBy="#{variable_paciente.correo}">
                     <h:outputLabel value="#{variable_paciente.correo}"/>
                 </p:column>
 
@@ -79,8 +79,8 @@
         </h:form>
 
         <h:form id="formModificar"  >
-            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Doctor" >
-                <p:panel header="Modificar Paciente">
+            <p:dialog id="dlg" widgetVar="dlgModificar" header="Modificación de datos de Mascota" >
+                <p:panel header="Modificar Mascota">
                     <p:panelGrid styleClass="sinBorde">
                         <p:row>
                             <p:column>
@@ -92,7 +92,7 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="direccion" value="DIRECCION"/>
+                                <p:outputLabel for="direccion" value="TIPO Y RAZA"/>
                             </p:column>
                             <p:column>
                                 <p:inputText id="direccion" value="#{pacienteBean.pacienteSeleccionado.direccion}"/>
@@ -108,7 +108,7 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <p:outputLabel for="CORREO" value="CORREO"/>
+                                <p:outputLabel for="CORREO" value="PESO"/>
                             </p:column>
                             <p:column>
                                 <p:inputText id="CORREO" value="#{pacienteBean.pacienteSeleccionado.correo}"/>
@@ -116,7 +116,7 @@
                         </p:row>
                         <p:row>
                             <p:column>
-                                <h:outputLabel for="clinica" value="CLINICA" />
+                                <h:outputLabel for="clinica" value="DUENO" />
                             </p:column>
                             <p:column>
                                 <p:autoComplete id="registro_paciente" value="#{autoCompleteBeanClinica.clinica}" completeMethod="#{autoCompleteBeanClinica.completeClinicaDespacho}" var="w" itemLabel="#{w.nombre}" itemValue="#{w}" converter="convertidorClinica" forceSelection="true" dropdown="true">
